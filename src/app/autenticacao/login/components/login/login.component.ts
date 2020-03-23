@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Login } from "../../models";
+import { LoginService } from '../../services';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
@@ -37,7 +39,21 @@ export class LoginComponent implements OnInit {
 
     const login: Login = this.form.value;
 
-    alert(JSON.stringify(login));
+    this.loginService.logar(login)
+      .subscribe(
+        data => {
+          console.log(JSON.stringify(data));
+        },
+        err => {
+          let msg: string = 'Tente novamente em instantes.';
+
+          if (err['status'] == 401) {
+            msg = 'Email/Senha Inválidos';
+          }
+
+          this.snackBar.open(msg, "Erro", { duration: 5000 });
+        }
+      );
   }
 
 }
