@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 
 import { CadastroPj } from '../../models';
 
+import {  CpfValidator } from '../../../../shared/validators';
+
 @Component({
   selector: 'app-cadastrar-pj',
   templateUrl: './cadastrar-pj.component.html',
@@ -30,7 +32,7 @@ export class CadastrarPjComponent implements OnInit {
       nome: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
-      cpf: ['', [Validators.required]],
+      cpf: ['', [Validators.required, CpfValidator ]],
       razaoSocial: ['', [Validators.required, Validators.minLength(5)]],
       cnpj: ['', [Validators.required]],
     });
