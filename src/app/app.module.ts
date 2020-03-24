@@ -6,7 +6,12 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AppComponent } from './app.component';
 
-import { LoginModule, LoginRoutingModule } from "./autenticacao";
+import { 
+  LoginModule, 
+  LoginRoutingModule, 
+  CadastroPjModule,
+  CadastroPjRoutingModule
+ } from "./autenticacao";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -20,6 +25,8 @@ import { AppRoutingModule } from "./app-routing.module";
     MatButtonModule,
     LoginModule,
     LoginRoutingModule,
+    CadastroPjModule,
+    CadastroPjRoutingModule,
     AppRoutingModule // Deve ser o último sempre.
   ],
   providers: [],
