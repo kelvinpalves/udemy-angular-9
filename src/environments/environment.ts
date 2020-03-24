@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   baseUrl: 'http://localhost/ponto-inteligente/',
-  baseApiUrl: 'http://localhost:8080/ponto-inteligente/api/'
+  baseApiUrl: 'http://localhost/ponto-inteligente/api/'
 };
 
 /*

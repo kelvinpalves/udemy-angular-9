@@ -12,6 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CadastrarPjComponent, CadastroPjComponent } from './components';
 import { SharedModule } from '../../shared/';
+import { CadastroPjService } from './services';
 
 @NgModule({
   declarations: [
@@ -32,5 +33,8 @@ import { SharedModule } from '../../shared/';
     FlexLayoutModule,
     SharedModule
   ],
+  providers: [
+    CadastroPjService
+  ]
 })
 export class CadastroPjModule { }

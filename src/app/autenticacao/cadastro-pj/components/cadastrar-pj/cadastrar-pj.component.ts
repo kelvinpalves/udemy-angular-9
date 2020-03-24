@@ -8,6 +8,8 @@ import { CadastroPj } from '../../models';
 
 import {  CpfValidator, CnpjValidator } from '../../../../shared/validators';
 
+import {  CadastroPjService } from '../../services';
+
 @Component({
   selector: 'app-cadastrar-pj',
   templateUrl: './cadastrar-pj.component.html',
@@ -20,7 +22,8 @@ export class CadastrarPjComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
+    private service: CadastroPjService
   ) { }
 
   ngOnInit(): void {
@@ -29,18 +32,38 @@ export class CadastrarPjComponent implements OnInit {
 
   gerarForm() {
     this.form = this.fb.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required]],
-      senha: ['', [Validators.required, Validators.minLength(6)]],
-      cpf: ['', [Validators.required, CpfValidator ]],
-      razaoSocial: ['', [Validators.required, Validators.minLength(5)]],
-      cnpj: ['', [Validators.required, CnpjValidator ]],
+      nome: ['Kelvin', [Validators.required, Validators.minLength(3)]],
+      email: ['email@gmail.com', [Validators.required]],
+      senha: ['123456', [Validators.required, Validators.minLength(6)]],
+      cpf: ['02873938013', [Validators.required, CpfValidator ]],
+      razaoSocial: ['teste', [Validators.required, Validators.minLength(5)]],
+      cnpj: ['93315190000621', [Validators.required, CnpjValidator ]],
     });
   }
 
   cadastrarPj() {
     const cadastroPj: CadastroPj = this.form.value;
-    alert(JSON.stringify(cadastroPj));
+    
+    this.service.cadastrar(cadastroPj)
+      .subscribe(
+        data => {
+          console.log(JSON.stringify(data));
+          const msg: string = "Realize o login para acessar o sistema.";
+          this.snackBar.open(msg, "Sucesso", { duration: 5000 });
+          this.router.navigate(['/login']);
+        },
+        err => {
+          console.log(JSON.stringify(err));
+          let msg: string = "Tente novamente em instantes.";
+          if (err.status == 400) {
+            console.log(err.error);
+            msg = err.error.errors.join(' ');
+          }
+          this.snackBar.open(msg, "Erro", { duration: 5000 });
+        }
+      );
+
+    return false;
   }
 
 }
