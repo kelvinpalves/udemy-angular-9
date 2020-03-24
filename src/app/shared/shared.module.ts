@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MascaraDirective } from './directives/mascara.directive';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MascaraDirective
+  ],
+  exports: [
+    MascaraDirective
+  ],
   imports: [
     CommonModule
   ]
