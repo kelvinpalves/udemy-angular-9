@@ -10,7 +10,9 @@ import {
   LoginModule, 
   LoginRoutingModule, 
   CadastroPjModule,
-  CadastroPjRoutingModule
+  CadastroPjRoutingModule,
+  CadastroPfModule,
+  CadastroPfRoutingModule
  } from "./autenticacao";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -27,6 +29,8 @@ import { AppRoutingModule } from "./app-routing.module";
     LoginRoutingModule,
     CadastroPjModule,
     CadastroPjRoutingModule,
+    CadastroPfModule,
+    CadastroPfRoutingModule,
     AppRoutingModule // Deve ser o último sempre.
   ],
   providers: [],
