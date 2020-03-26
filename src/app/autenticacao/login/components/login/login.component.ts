@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -46,9 +47,9 @@ export class LoginComponent implements OnInit {
           const usuarioData = JSON.parse(atob(data['data']['token'].split('.')[1]))
 
           if (usuarioData['role'] == 'ROLE_ADMIN') {
-            alert("Deve redirecionar para a página de admin");
+            this.router.navigate(['/admin']);
           } else {
-            alert("Deve redirecionar para a página de funcionários");
+            this.router.navigate(['/funcionario']);
           }
         },
         err => {
