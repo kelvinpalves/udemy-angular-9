@@ -7,7 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+
 import { AppComponent } from './app.component';
+
+import { FuncionarioModule } from './funcionario';
 
 import { 
   LoginModule, 
@@ -29,12 +32,14 @@ import { AppRoutingModule } from "./app-routing.module";
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
+    FlexLayoutModule,
     LoginModule,
     LoginRoutingModule,
     CadastroPjModule,
     CadastroPjRoutingModule,
     CadastroPfModule,
     CadastroPfRoutingModule,
+    FuncionarioModule,
     AppRoutingModule // Deve ser o último sempre.
   ],
   providers: [],
