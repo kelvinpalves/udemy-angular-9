@@ -10,7 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 
-import { FuncionarioModule } from './funcionario';
+import { FuncionarioModule, FuncionarioRoutingModule } from './funcionario';
 
 import { 
   LoginModule, 
@@ -40,6 +40,7 @@ import { AppRoutingModule } from "./app-routing.module";
     CadastroPfModule,
     CadastroPfRoutingModule,
     FuncionarioModule,
+    FuncionarioRoutingModule,
     AppRoutingModule // Deve ser o último sempre.
   ],
   providers: [],
